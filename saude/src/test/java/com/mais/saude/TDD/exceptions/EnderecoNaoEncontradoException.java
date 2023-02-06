@@ -1,4 +1,4 @@
-package com.mais.saude.TDD;
+package com.mais.saude.TDD.exceptions;
 
 public class EnderecoNaoEncontradoException {
     
