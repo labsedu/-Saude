@@ -1,7 +1,9 @@
 package com.mais.saude.models;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.mais.saude.models.enuns.Genero;
 
@@ -14,6 +16,7 @@ public class Pessoa extends Endereco {
     private String rg;
     private String cartaoNacionalSaude;
     private Endereco endereco;
+    private List<TelefoneCelular> telefonesCelulares;
 
     /**********************Construtores**************************/
     public Pessoa() {
@@ -32,6 +35,16 @@ public class Pessoa extends Endereco {
             idade--;
         }
         return idade;
+    }
+
+    public void adicionarTelefone(String numero) {
+        TelefoneCelular celular = new TelefoneCelular();
+        celular.setPessoa(this);
+        telefonesCelulares.add(celular);
+    }
+
+    public void removeTelefone(TelefoneCelular telefoneCelular) {
+        telefonesCelulares.remove(telefoneCelular);
     }
 
     /*************************Geters*****************************/
@@ -59,10 +72,8 @@ public class Pessoa extends Endereco {
     public Endereco getEndereco() {
         return endereco;
     }
-    @Override
-    public String getLogradouro() {
-        // TODO Auto-generated method stub
-        return super.getLogradouro();
+    public List<TelefoneCelular> getTelefonesCelulares() {
+        return telefonesCelulares;
     }
 
     /*************************Seters*****************************/
@@ -87,10 +98,8 @@ public class Pessoa extends Endereco {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    @Override
-    public void setLogradouro(String logradouro) {
-        // TODO Auto-generated method stub
-        super.setLogradouro(logradouro);
+    public void setTelefonesCelulares(List<TelefoneCelular> telefonesCelulares) {
+        this.telefonesCelulares = telefonesCelulares;
     }
 
     /*********************HashCode/Equals************************/
@@ -106,6 +115,7 @@ public class Pessoa extends Endereco {
         result = prime * result + ((rg == null) ? 0 : rg.hashCode());
         result = prime * result + ((cartaoNacionalSaude == null) ? 0 : cartaoNacionalSaude.hashCode());
         result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+        result = prime * result + ((telefonesCelulares == null) ? 0 : telefonesCelulares.hashCode());
         return result;
     }
 
@@ -155,19 +165,20 @@ public class Pessoa extends Endereco {
                 return false;
         } else if (!endereco.equals(other.endereco))
             return false;
+        if (telefonesCelulares == null) {
+            if (telefonesCelulares != null)
+                return false;
+        } else if (!telefonesCelulares.equals(other.telefonesCelulares))
+            return false;
         return true;
     }
-
+    
     /*************************output*****************************/
     @Override
     public String toString() {
-        return "Pessoa [ID=" + ID + ", Nome=" + nome + ", Data de Nascimento=" + DataNascimento + ", Gênero=" + genero
-                + ", CPF=" + cpf + ", RG=" + rg + ", Cartão Nacional de Saúde=" + cartaoNacionalSaude + ", Endereco="
-                + endereco + "]";
-    }
-
-    public void setID(Long iD) {
-        ID = iD;
+        return "Pessoa [ID=" + ID + ", nome=" + nome + ", DataNascimento=" + DataNascimento + ", genero=" + genero
+                + ", cpf=" + cpf + ", rg=" + rg + ", cartaoNacionalSaude=" + cartaoNacionalSaude + ", endereco="
+                + endereco + ", telefonesCelulares=" + telefonesCelulares + "]";
     }
 
 }

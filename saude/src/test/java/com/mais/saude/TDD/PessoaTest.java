@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -18,7 +20,6 @@ public class PessoaTest {
 
     @Test
     public void testPessoa() throws ParseException {
-        Pessoa pessoa = new Pessoa();
         pessoa.setNome("Eduardo Felizardo Cândido");
         dataNascimento = format.parse("11/10/1976");
         pessoa.setDataNascimento(dataNascimento);
@@ -56,5 +57,18 @@ public class PessoaTest {
         int idadeEsperada = 46;
         int idadeCalulada = pessoa.calcularIdade(dataNascimento);
         assertEquals(idadeEsperada, idadeCalulada);
+    }
+
+    @Test
+    public void testTelefoneCelularAdiconar() {
+        pessoa.adicionarTelefone("11 96060-8008");
+        pessoa.adicionarTelefone("11 96060-8009");
+
+        String telefoneEsperdo1 ="11 96060-8008";
+        String telefoneEsperdo2 ="11 96060-8009";
+
+        assertEquals(telefoneEsperdo1, pessoa.getTelefonesCelulares());
+        assertEquals(telefoneEsperdo2, pessoa.getTelefonesCelulares());
+
     }
 }
