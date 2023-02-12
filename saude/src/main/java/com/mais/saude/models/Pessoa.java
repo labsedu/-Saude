@@ -7,6 +7,7 @@ import java.util.List;
 import com.mais.saude.models.enuns.Genero;
 
 public class Pessoa extends Endereco {
+
     private Long ID;
     private String nome;
     private Date DataNascimento;
@@ -15,7 +16,6 @@ public class Pessoa extends Endereco {
     private String rg;
     private String cartaoNacionalSaude;
     private Endereco endereco;
-    private List<TelefoneCelular> telefonesCelulares;
 
     /**********************Construtores**************************/
     public Pessoa() {
@@ -34,16 +34,6 @@ public class Pessoa extends Endereco {
             idade--;
         }
         return idade;
-    }
-
-    public void adicionarTelefone(String numero) {
-        TelefoneCelular celular = new TelefoneCelular();
-        celular.setPessoa(this);
-        telefonesCelulares.add(celular);
-    }
-
-    public void removeTelefone(TelefoneCelular telefoneCelular) {
-        telefonesCelulares.remove(telefoneCelular);
     }
 
     /*************************Geters*****************************/
@@ -71,9 +61,6 @@ public class Pessoa extends Endereco {
     public Endereco getEndereco() {
         return endereco;
     }
-    public List<TelefoneCelular> getTelefonesCelulares() {
-        return telefonesCelulares;
-    }
 
     /*************************Seters*****************************/
     public void setNome(String nome) {
@@ -97,9 +84,6 @@ public class Pessoa extends Endereco {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    public void setTelefonesCelulares(List<TelefoneCelular> telefonesCelulares) {
-        this.telefonesCelulares = telefonesCelulares;
-    }
 
     /*********************HashCode/Equals************************/
     @Override
@@ -114,7 +98,6 @@ public class Pessoa extends Endereco {
         result = prime * result + ((rg == null) ? 0 : rg.hashCode());
         result = prime * result + ((cartaoNacionalSaude == null) ? 0 : cartaoNacionalSaude.hashCode());
         result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
-        result = prime * result + ((telefonesCelulares == null) ? 0 : telefonesCelulares.hashCode());
         return result;
     }
 
@@ -164,11 +147,6 @@ public class Pessoa extends Endereco {
                 return false;
         } else if (!endereco.equals(other.endereco))
             return false;
-        if (telefonesCelulares == null) {
-            if (telefonesCelulares != null)
-                return false;
-        } else if (!telefonesCelulares.equals(other.telefonesCelulares))
-            return false;
         return true;
     }
     
@@ -177,7 +155,7 @@ public class Pessoa extends Endereco {
     public String toString() {
         return "Pessoa [ID=" + ID + ", nome=" + nome + ", DataNascimento=" + DataNascimento + ", genero=" + genero
                 + ", cpf=" + cpf + ", rg=" + rg + ", cartaoNacionalSaude=" + cartaoNacionalSaude + ", endereco="
-                + endereco + ", telefonesCelulares=" + telefonesCelulares + "]";
+                + endereco + "]";
     }
 
 }

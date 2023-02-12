@@ -55,17 +55,4 @@ public class PessoaTest {
         int idadeCalulada = pessoa.calcularIdade(dataNascimento);
         assertEquals(idadeEsperada, idadeCalulada);
     }
-
-    @Test
-    public void testTelefoneCelularAdiconar() {
-        pessoa.adicionarTelefone("11 96060-8008");
-        pessoa.adicionarTelefone("11 96060-8009");
-
-        String telefoneEsperdo1 ="11 96060-8008";
-        String telefoneEsperdo2 ="11 96060-8009";
-
-        assertEquals(telefoneEsperdo1, pessoa.getTelefonesCelulares());
-        assertEquals(telefoneEsperdo2, pessoa.getTelefonesCelulares());
-
-    }
 }
