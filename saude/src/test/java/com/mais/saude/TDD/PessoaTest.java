@@ -4,10 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import org.junit.Test;
 
 import com.mais.saude.models.Pessoa;
